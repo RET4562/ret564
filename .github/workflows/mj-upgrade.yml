@@ -113,7 +113,6 @@ jobs:
       - name: Install dependencies (update lock file)
         run: |
           echo "=== Updating package-lock.json ==="
-          rm -f package-lock.json
           npm install
 
       - name: Display new MJ version
