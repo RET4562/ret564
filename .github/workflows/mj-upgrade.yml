@@ -112,6 +112,8 @@ jobs:
 
       - name: Install dependencies (update lock file)
         run: |
+          echo "=== Clearing npm cache ==="
+          npm cache clean --force
           echo "=== Updating package-lock.json ==="
           rm -f package-lock.json
           npm install --legacy-peer-deps --force
