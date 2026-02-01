@@ -114,7 +114,7 @@ jobs:
         run: |
           echo "=== Updating package-lock.json ==="
           rm -f package-lock.json
-          npm install
+          npm install --legacy-peer-deps --force
 
       - name: Display new MJ version
         run: |
