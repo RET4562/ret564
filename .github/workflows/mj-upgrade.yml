@@ -113,7 +113,7 @@ jobs:
       - name: Install dependencies (update lock file)
         run: |
           echo "=== Updating package-lock.json ==="
-          npm install
+          npm ci
 
       - name: Display new MJ version
         run: |
