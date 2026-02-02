@@ -110,7 +110,7 @@ jobs:
           echo "=== Running MJ CodeGen v3.4.0 ==="
           echo "Using additionalSchemaInfo for soft PK/FK constraints"
           echo ""
-          npx @memberjunction/cli@${mjCliVersion} codegen
+          npx --yes @memberjunction/cli@${mjCliVersion} codegen
         env:
           DB_HOST: ${{ steps.db.outputs.host }}
           DB_PORT: ${{ steps.db.outputs.port }}
