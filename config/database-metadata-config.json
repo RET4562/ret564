@@ -1,59 +1,35 @@
 {
-  "$schema": "./database-metadata-config.schema.json",
-  "description": "Soft PK/FK metadata for HubSpot data synced via HotGlue (TEST)",
-  "version": "1.0",
-  "tap": [
+  "tables": [
     {
-      "TableName": "contacts",
-      "Description": "HubSpot Contacts",
-      "PrimaryKey": [
+      "schemaName": "tap",
+      "tableName": "contacts",
+      "primaryKeys": [{ "fieldName": "vid" }],
+      "foreignKeys": [
         {
-          "FieldName": "vid",
-          "Description": "HubSpot Contact ID"
-        }
-      ],
-      "ForeignKeys": [
-        {
-          "FieldName": "associatedcompanyid",
-          "SchemaName": "tap",
-          "RelatedTable": "companies",
-          "RelatedField": "hs_object_id",
-          "Description": "Associated Company"
+          "fieldName": "associatedcompanyid",
+          "relatedSchema": "tap",
+          "relatedTable": "companies",
+          "relatedField": "hs_object_id"
         }
       ]
     },
     {
-      "TableName": "companies",
-      "Description": "HubSpot Companies",
-      "PrimaryKey": [
-        {
-          "FieldName": "hs_object_id",
-          "Description": "HubSpot Object ID"
-        }
-      ],
-      "ForeignKeys": []
+      "schemaName": "tap",
+      "tableName": "companies",
+      "primaryKeys": [{ "fieldName": "hs_object_id" }],
+      "foreignKeys": []
     },
     {
-      "TableName": "deals",
-      "Description": "HubSpot Deals",
-      "PrimaryKey": [
-        {
-          "FieldName": "hs_object_id",
-          "Description": "HubSpot Object ID"
-        }
-      ],
-      "ForeignKeys": []
+      "schemaName": "tap",
+      "tableName": "deals",
+      "primaryKeys": [{ "fieldName": "hs_object_id" }],
+      "foreignKeys": []
     },
     {
-      "TableName": "tickets",
-      "Description": "HubSpot Tickets",
-      "PrimaryKey": [
-        {
-          "FieldName": "hs_object_id",
-          "Description": "HubSpot Object ID"
-        }
-      ],
-      "ForeignKeys": []
+      "schemaName": "tap",
+      "tableName": "tickets",
+      "primaryKeys": [{ "fieldName": "hs_object_id" }],
+      "foreignKeys": []
     }
   ]
 }
