@@ -105,9 +105,9 @@ jobs:
           sudo apt-get install -y -qq mssql-tools18 unixodbc-dev
           echo "/opt/mssql-tools18/bin" >> $GITHUB_PATH
 
-      - name: Install MemberJunction CLI v3.4.0
-        run: npm install -g @memberjunction/cli@3.4.0
-
+      - name: Install MemberJunction CLI and Core v3.4.0
+        run: npm install -g @memberjunction/cli@3.4.0 && npm install -g @memberjunction/core@3.4.0 
+        
       - name: Run MemberJunction CodeGen
         run: |
           echo "=== Running MJ CodeGen v3.4.0 ==="
