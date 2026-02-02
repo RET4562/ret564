@@ -1,0 +1,59 @@
+{
+  "$schema": "./database-metadata-config.schema.json",
+  "description": "Soft PK/FK metadata for HubSpot data synced via HotGlue (TEST)",
+  "version": "1.0",
+  "tap": [
+    {
+      "TableName": "contacts",
+      "Description": "HubSpot Contacts",
+      "PrimaryKey": [
+        {
+          "FieldName": "vid",
+          "Description": "HubSpot Contact ID"
+        }
+      ],
+      "ForeignKeys": [
+        {
+          "FieldName": "associatedcompanyid",
+          "SchemaName": "tap",
+          "RelatedTable": "companies",
+          "RelatedField": "hs_object_id",
+          "Description": "Associated Company"
+        }
+      ]
+    },
+    {
+      "TableName": "companies",
+      "Description": "HubSpot Companies",
+      "PrimaryKey": [
+        {
+          "FieldName": "hs_object_id",
+          "Description": "HubSpot Object ID"
+        }
+      ],
+      "ForeignKeys": []
+    },
+    {
+      "TableName": "deals",
+      "Description": "HubSpot Deals",
+      "PrimaryKey": [
+        {
+          "FieldName": "hs_object_id",
+          "Description": "HubSpot Object ID"
+        }
+      ],
+      "ForeignKeys": []
+    },
+    {
+      "TableName": "tickets",
+      "Description": "HubSpot Tickets",
+      "PrimaryKey": [
+        {
+          "FieldName": "hs_object_id",
+          "Description": "HubSpot Object ID"
+        }
+      ],
+      "ForeignKeys": []
+    }
+  ]
+}
