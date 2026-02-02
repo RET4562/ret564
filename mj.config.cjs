@@ -3,6 +3,7 @@
 /** @import { MJConfig } from "./packages/MJCLI/src/config" */
 
 const codegenConfig = {
+  additionalSchemaInfo: './config/database-metadata-config.json',
   /**
    * CodeGenLib Configuration (previously config.json)
    */
