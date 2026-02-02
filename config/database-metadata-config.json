@@ -3,7 +3,11 @@
     {
       "schemaName": "tap",
       "tableName": "contacts",
-      "primaryKeys": [{ "fieldName": "vid" }],
+      "primaryKeys": [
+        {
+          "fieldName": "vid"
+        }
+      ],
       "foreignKeys": [
         {
           "fieldName": "associatedcompanyid",
@@ -16,19 +20,31 @@
     {
       "schemaName": "tap",
       "tableName": "companies",
-      "primaryKeys": [{ "fieldName": "hs_object_id" }],
+      "primaryKeys": [
+        {
+          "fieldName": "hs_object_id"
+        }
+      ],
       "foreignKeys": []
     },
     {
       "schemaName": "tap",
       "tableName": "deals",
-      "primaryKeys": [{ "fieldName": "hs_object_id" }],
+      "primaryKeys": [
+        {
+          "fieldName": "hs_object_id"
+        }
+      ],
       "foreignKeys": []
     },
     {
       "schemaName": "tap",
       "tableName": "tickets",
-      "primaryKeys": [{ "fieldName": "hs_object_id" }],
+      "primaryKeys": [
+        {
+          "fieldName": "hs_object_id"
+        }
+      ],
       "foreignKeys": []
     }
   ]
