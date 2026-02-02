@@ -105,12 +105,16 @@ jobs:
           sudo apt-get install -y -qq mssql-tools18 unixodbc-dev
           echo "/opt/mssql-tools18/bin" >> $GITHUB_PATH
 
-      - name: Run MemberJunction CodeGen v3.4.0
+      - name: Install MemberJunction CLI v3.4.0
+        run: npm install -g @memberjunction/cli@3.4.0
+
+      - name: Run MemberJunction CodeGen
         run: |
           echo "=== Running MJ CodeGen v3.4.0 ==="
           echo "Using additionalSchemaInfo for soft PK/FK constraints"
+          echo "sqlcmd location: $(which sqlcmd || echo 'not in PATH')"
           echo ""
-          npx --yes @memberjunction/cli@${mjCliVersion} codegen
+          mj codegen
         env:
           DB_HOST: ${{ steps.db.outputs.host }}
           DB_PORT: ${{ steps.db.outputs.port }}
@@ -139,8 +143,7 @@ jobs:
           git add apps/MJExplorer/src/app/generated/ || true
           git add apps/MJAPI/schema.graphql || true
 
-          git commit -m "chore: regenerate entities with soft PK/FK metadata
-
+          git commit -m "chore: regenerate entities with soft PK/FK metadata [skip ci]"
 
       - name: Push changes
         if: steps.git-check.outputs.changes == 'true'
