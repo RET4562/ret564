@@ -91,18 +91,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
-          cache: 'pnpm'
+          node-version-file: '.nvmrc'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci
 
       - name: Run MemberJunction CodeGen v3.4.0
         run: |
           echo "=== Running MJ CodeGen v3.4.0 ==="
           echo "Using additionalSchemaInfo for soft PK/FK constraints"
           echo ""
-          pnpm dlx @memberjunction/cli@3.4.0 codegen
+          npx @memberjunction/cli@${mjCliVersion} codegen
         env:
           DB_HOST: ${{ steps.db.outputs.host }}
           DB_PORT: ${{ steps.db.outputs.port }}
