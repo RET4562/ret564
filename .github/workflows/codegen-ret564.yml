@@ -87,16 +87,6 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10
-
-      
-      - name: Install SQL Server tools (sqlcmd)
-        run: |
-          curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-          sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list)"
-          sudo apt-get update
-          sudo apt-get install -y mssql-tools18 unixodbc-dev
-          echo "/opt/mssql-tools18/bin" >> \$GITHUB_PATH
-
         
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -109,6 +99,14 @@ jobs:
 
       - name: Run MemberJunction CodeGen v3.4.0
         run: |
+          # Install sqlcmd inline to ensure PATH is available
+          echo "Installing SQL Server tools (sqlcmd)..."
+          curl -s https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc > /dev/null
+          sudo add-apt-repository -y "$(curl -s https://packages.microsoft.com/config/ubuntu/22.04/prod.list)"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mssql-tools18 unixodbc-dev
+          export PATH="\$PATH:/opt/mssql-tools18/bin"
+          
           echo "=== Running MJ CodeGen v3.4.0 ==="
           echo "Using additionalSchemaInfo for soft PK/FK constraints"
           echo ""
